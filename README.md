@@ -26,9 +26,9 @@ Dependencies in terms of the actual files:
                 src/preprocessing.sh
                 matlab/bin/run_matlab_entrypoint.sh
                     matlab/bin/matlab_entrypoint
-                        matlab/src/matlab_entrypoint.m   \  Used for compilation,
-                            matlab/src/matlab_main.m     |  but not at container
-                                matlab/src/*             /  runtime
+                        / matlab/src/matlab_entrypoint.m \  Used for compilation,
+                        |     matlab/src/matlab_main.m   |  but not at container
+                        \         matlab/src/*           /  runtime
                 src/postprocessing.sh
                 src/make_pdf.sh
                 src/finalize.sh
