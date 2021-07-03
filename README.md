@@ -1,7 +1,5 @@
 # Demo singularity container for Matlab
 
-Set up with shell wrapper so prep and finalize/PDF code can be shell script, which is easier.
-
     Singularity
     src/
         pipeline_entrypoint.sh
