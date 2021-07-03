@@ -9,8 +9,8 @@ codebase. Done this way, it's fairly easy to work on each piece in isolation,
 problem-solving from the inside out.
 
     Singularity container
-    |   X11 wrapper
-    |   |   Primary entrypoint (shell script)
+    |   Primary entrypoint (shell script)
+    |   |   X11 wrapper
     |   |   |   Shell script preprocessing
     |   |   |   Matlab processing (compiled)
     |   |   |   |   Matlab entrypoint
