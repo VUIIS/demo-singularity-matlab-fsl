@@ -70,8 +70,30 @@ https://docs.github.com/en/github/managing-large-files/working-with-large-files
 
 `matlab/test_compiled_matlab.sh`
 
+## Preprocessing
 
-## Finalizing
+For this example, the only preprocessing is to copy the input images to the
+output/working directory: `src/preprocessing.sh`. But any sort of non-matlab 
+work can be done here ahead of running the matlab part.
+
+## Postprocessing
+
+There isn't any postprocessing for this example, but any sort of non-matlab 
+work needed after the matlab part is done could be performed here: 
+`src/postprocessing.sh`.
+
+## PDF creation
+
+All assessors on VUIIS XNAT require a PDF QA report of some sort. For this
+example, a display of the segmented ROIs overlaid on the T1 is created using
+fsleyes and ImageMagick, `src/make_pdf.sh`.
+
+## Finalizing the output
+
+All Niftis must be compressed for storage on XNAT, and outputs can be organized
+in an easily understandable way: `src/finalize.sh`.
+
+## Documentation
 
 Write an informative README - so tedious, yet so helpful. Here's an excellent 
 example: https://github.com/MASILab/PreQual

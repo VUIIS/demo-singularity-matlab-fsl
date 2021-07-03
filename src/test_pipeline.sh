@@ -4,7 +4,6 @@
 # path.
 
 # Just the PDF creation part
-export seg_niigz=../INPUTS/seg.nii.gz
 export project=TESTPROJ
 export subject=TESTSUBJ
 export session=TESTSESS

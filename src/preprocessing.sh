@@ -15,4 +15,5 @@ echo Running $(basename "${BASH_SOURCE}")
 # filename. Hardcoding filenames like this makes programming a lot easier, and
 # the loss of flexibility is usually not a problem for a containerized pipeline
 # working in its own private directory.
-cp "${image_niigz}" "${out_dir}"/image.nii.gz
+cp "${t1_niigz}" "${out_dir}"/t1.nii.gz
+cp "${seg_niigz}" "${out_dir}"/seg.nii.gz

@@ -18,7 +18,7 @@ cd ${out_dir}
 
 # Binarize the segmentation and find its center of mass, as a starting point for
 # slice placement in the visualization
-fslmaths "${seg_niigz}" -bin mask
+fslmaths seg -bin mask
 com=$(fslstats mask -c)
 XYZ=(${com// / })
 

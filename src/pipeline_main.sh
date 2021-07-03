@@ -14,8 +14,8 @@ preprocessing.sh
 # line arguments, although we could use matlab's getenv to pull them from the
 # environment instead if desired.
 run_matlab_entrypoint.sh "${MATLAB_ROOT}" \
-    t1_niigz "${t1_niigz}" \
-    seg_niigz "${seg_niigz}" \
+    t1_niigz "${out_dir}"/t1.nii.gz \
+    seg_niigz "${out_dir}"/seg.nii.gz \
     diameter_mm "${diameter_mm}" \
     project "${project}" \
     subject "${subject}" \
@@ -23,8 +23,11 @@ run_matlab_entrypoint.sh "${MATLAB_ROOT}" \
     scan "${scan}" \
     out_dir "${out_dir}"
 
+# Postprocessing
+postprocessing.sh
+
 # FSL based PDF creation
 make_pdf.sh
 
-# Finally the postprocessing
-postprocessing.sh
+# Finalize and organize outputs
+finalize.sh
