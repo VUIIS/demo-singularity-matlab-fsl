@@ -5,6 +5,7 @@
 # building the singularity container.
 
 bin/run_matlab_entrypoint.sh /usr/local/MATLAB/MATLAB_Runtime/v97 \
-    image_niigz ../INPUTS/t1.nii.gz \
+    t1_niigz ../INPUTS/t1.nii.gz \
+    seg_niigz ../INPUTS/seg.nii.gz \
     diameter_mm 30 \
     out_dir ../OUTPUTS

@@ -14,7 +14,8 @@ preprocessing.sh
 # line arguments, although we could use matlab's getenv to pull them from the
 # environment instead if desired.
 run_matlab_entrypoint.sh "${MATLAB_ROOT}" \
-    image_niigz "${image_niigz}" \
+    t1_niigz "${t1_niigz}" \
+    seg_niigz "${seg_niigz}" \
     diameter_mm "${diameter_mm}" \
     project "${project}" \
     subject "${subject}" \

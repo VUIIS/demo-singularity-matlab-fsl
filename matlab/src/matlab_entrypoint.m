@@ -11,9 +11,12 @@ function matlab_entrypoint(varargin)
 % "optional", providing default values when appropriate.
 P = inputParser;
 
-% Our example code takes a single 3D nifti image as input. This argument
+% Our example code takes a single 3D nifti T1 as input. This argument
 % is expected to contain the fully qualified path and filename.
-addOptional(P,'image_niigz','')
+addOptional(P,'t1_niigz','')
+
+% We also want a corresponding segmentation.
+addOptional(P,'seg_niigz','')
 
 % We also take a single numerical parameter. Note that when arguments are
 % passed to compiled Matlab via command line, they all come as strings; so

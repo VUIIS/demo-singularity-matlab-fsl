@@ -25,13 +25,19 @@ do
     key="$1"
     case $key in
         
-        --image_niigz)
-            # Our example code takes a single 3D nifti image as input. This
+        --t1_niigz)
+            # Our example code takes a single 3D T1 nifti image as input. This
             # is expected to be the fully qualified path and filename.
-            export image_niigz="$2"; shift; shift ;;
+            export t1_niigz="$2"; shift; shift ;;
+
+        --seg_niigz)
+            # Segmentation of the T1. Useful here to provide example code for
+            # viewing ROIs. Expected to be in the same geometry, position, voxel
+            # size, etc - e.g. output of slant or multi-atlas pipelines.
+            export seg_niigz="$2"; shift; shift ;;
 
         --diameter_mm)
-            # Diameter in mm of the hole we will punch in the image
+            # Diameter in mm of the hole we will punch in the images
             export diameter_mm="$2"; shift; shift ;;
 
         --project)
