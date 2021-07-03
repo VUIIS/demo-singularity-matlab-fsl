@@ -107,8 +107,7 @@ From: ubuntu:20.04
   rmdir /MCR
 
   # We need to run the matlab executable now to extract the CTF archive, because
-  # now is the only time the container is writeable. Each version of the runtime
-  # also has its own particular installed location.
+  # now is the only time the container is writeable.
   /opt/demo/matlab/bin/run_matlab_entrypoint.sh ${runtime_location} quit
 
   # FSL. The centos7 version suits for Ubuntu 14-20. For available versions, see
