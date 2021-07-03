@@ -5,7 +5,8 @@ the specified diameter, and saves the result to a new Nifti file.
 
 This is one way to organize a Matlab-based Singularity container - 
 perhaps most easily conceived of as a series of wrappers around the main 
-codebase:
+codebase. Done this way, it's fairly easy to work on each piece in isolation,
+problem-solving from the inside out.
 
     Singularity container
     |   X11 wrapper
