@@ -36,6 +36,11 @@ From: ubuntu:20.04
   matlab                       /opt/demo
   README.md                    /opt/demo
 
+  # If we're installing MCR and FSL from local copies, we need to copy those
+  # into the container as well
+  MATLAB_Runtime_R2019b_Update_6_glnxa64.zip   /opt/demo
+  fsl-6.0.4-centos7_64.tar.gz                  /opt/demo
+  
  
 %labels
   Maintainer baxter.rogers@vanderbilt.edu
@@ -75,27 +80,42 @@ From: ubuntu:20.04
   # to compile the code. Each version of the runtime has its own download URL
   # and installed location:
   # https://www.mathworks.com/products/compiler/matlab-runtime.html
-  runtime_url=https://ssd.mathworks.com/supportfiles/downloads/R2019b/Release/6/deployment_files/installer/complete/glnxa64/MATLAB_Runtime_R2019b_Update_6_glnxa64.zip
+  #runtime_url=https://ssd.mathworks.com/supportfiles/downloads/R2019b/Release/6/deployment_files/installer/complete/glnxa64/MATLAB_Runtime_R2019b_Update_6_glnxa64.zip
+  #runtime_location=/usr/local/MATLAB/MATLAB_Runtime/v97
+  #mkdir /MCR
+  #wget -nv -P /MCR ${runtime_url} -O /MCR/runtime_installer.zip
+  #unzip -qq /MCR/runtime_installer.zip -d /MCR/runtime_installer
+  #/MCR/runtime_installer/install -mode silent -agreeToLicense yes
+  #rm -r /MCR/runtime_installer /MCR/runtime_installer.zip
+  #rmdir /MCR
+  
+  # Alternatively, we can install the MCR from a local copy of the file if there
+  # is one, and save the download time during build.
+  runtime_file=/opt/demo/MATLAB_Runtime_R2019b_Update_6_glnxa64.zip
   runtime_location=/usr/local/MATLAB/MATLAB_Runtime/v97
   mkdir /MCR
-  wget -nv -P /MCR ${runtime_url} -O /MCR/runtime_installer.zip
-  unzip -qq /MCR/runtime_installer.zip -d /MCR/runtime_installer
+  unzip -qq "${runtime_file}" -d /MCR/runtime_installer
   /MCR/runtime_installer/install -mode silent -agreeToLicense yes
-  rm -r /MCR/runtime_installer /MCR/runtime_installer.zip
+  rm -r /MCR/runtime_installer "${runtime_file}"
   rmdir /MCR
-
+  
   # We need to run the matlab executable now to extract the CTF archive, because
   # now is the only time the container is writeable.
   /opt/demo/matlab/bin/run_matlab_entrypoint.sh ${runtime_location} quit
 
   # FSL. The centos7 version suits for Ubuntu 14-20. For available versions, see
   # https://fsl.fmrib.ox.ac.uk/fsldownloads/manifest.csv
-  fslfile=fsl-6.0.4-centos7_64.tar.gz
-  cd /usr/local
-  wget -nv https://fsl.fmrib.ox.ac.uk/fsldownloads/${fslfile}
-  tar -zxf ${fslfile}
+  #fslfile=fsl-6.0.4-centos7_64.tar.gz
+  #cd /usr/local
+  #wget -nv https://fsl.fmrib.ox.ac.uk/fsldownloads/${fslfile}
+  #tar -zxf ${fslfile}
+  #rm ${fslfile}
+  #cd -
+
+  # Or we can install FSL from a local file
+  fslfile=/opt/demo/fsl-6.0.4-centos7_64.tar.gz
+  tar -zxf ${fslfile} -C /usr/local
   rm ${fslfile}
-  cd -
 
   # Run the FSL setup so we can run the python installer
   export FSLDIR=/usr/local/fsl
