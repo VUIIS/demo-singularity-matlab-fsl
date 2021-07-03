@@ -166,5 +166,5 @@ From: ubuntu:20.04
 
   # We just call our wrapper, passing along all the command line arguments that
   # were given at the singularity run command line.
-  wrapper.sh "$@"
+  xwrapper.sh "$@"
 
