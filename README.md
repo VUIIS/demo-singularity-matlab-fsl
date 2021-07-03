@@ -132,3 +132,6 @@ Good practice: before you build, create a release on github (if using github).
 Be sure that tag is checked out in your working copy of the repo. Give the 
 container a versioned name like `demo_v1.0.0.simg` that matches the release 
 version.
+
+You can run `matlab/check_for_compilation.sh` first to make sure there's no 
+source code newer than the compiled executable.
