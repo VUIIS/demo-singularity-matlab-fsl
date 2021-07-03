@@ -23,14 +23,14 @@ PATH=${MATLAB_ROOT}/bin:${PATH}
 #
 # Relative paths are specified here, assuming we're running this script from
 # the matlab/build directory.
-mcc -m -v ../src/matlab_entrypoint.m \
+mcc -m -v src/matlab_entrypoint.m \
     -N \
     -p ${MATLAB_ROOT}/toolbox/images \
-    -a ../src \
-    -d ../bin
+    -a src \
+    -d bin
 
 # We grant lenient execute permissions to the matlab executable and runscript so
 # we don't have hiccups later.
-chmod go+rx ../bin/matlab_entrypoint
-chmod go+rx ../bin/run_matlab_entrypoint.sh
+chmod go+rx bin/matlab_entrypoint
+chmod go+rx bin/run_matlab_entrypoint.sh
 
