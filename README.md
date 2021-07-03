@@ -62,7 +62,9 @@ The script `matlab/src/test_matlab_entrypoint.m` is an example of how to do this
 
 ### Compile the Matlab code
 
-`matlab/compile_matlab.sh`
+`matlab/compile_matlab.sh` shows how. Many compiled executables are likely to be
+too large to store on github. Git LFS may be a solution.
+https://docs.github.com/en/github/managing-large-files/working-with-large-files
 
 ### Test the compiled Matlab code
 
