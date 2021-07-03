@@ -14,6 +14,21 @@ codebase:
     |   |   |   \           Matlab sub-functions / codebase
     \   \   \   Shell script postprocessing
 
+Dependencies in terms of the actual files:
+
+    Singularity
+        src/pipeline_entrypoint.sh
+            src/pipeline_main.sh
+                src/preprocessing.sh
+                matlab/bin/run_matlab_entrypoint.sh
+                    matlab/bin/matlab_entrypoint
+                    matlab/compile_matlab.sh             \  Used for compilation,
+                        matlab/src/matlab_entrypoint.m   |  but not at container
+                            matlab/src/matlab_main.m     |  runtime
+                                matlab/src/*             /
+                src/postprocessing.sh
+                
+
 The process of putting it together is described below. The scripts and code in
 this repository are extensively commented, so if something isn't clear here,
 it's probably explained in the example code.
