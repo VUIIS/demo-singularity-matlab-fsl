@@ -71,3 +71,8 @@ https://docs.github.com/en/github/managing-large-files/working-with-large-files
 `matlab/test_compiled_matlab.sh`
 
 
+## Finalizing
+
+Write a useful and informative README! Here's an excellent example:
+https://github.com/MASILab/PreQual
+
