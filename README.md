@@ -30,7 +30,8 @@ Dependencies in terms of the actual files:
                             matlab/src/matlab_main.m     |  but not at container
                                 matlab/src/*             /  runtime
                 src/postprocessing.sh
-                
+                src/make_pdf.sh
+                src/finalize.sh
 
 The process of putting it together is described below. The scripts and code in
 this repository are extensively commented, so if something isn't clear here,
