@@ -22,7 +22,7 @@ Write Matlab code that does what's needed. Put it in `matlab/src`.
 
 `matlab/src/matlab_entrypoint.m` exists to take command line arguments, parse 
 them, and call the main code. A convenient way to set things up is to write a 
-main function that takes a structure `inp` as its sole input, with the structure
+main function that takes a structure as its sole input, with the structure
 containing whatever inputs are needed. See `matlab/src/matlab_main.m` for an 
 example of this.
 
