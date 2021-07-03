@@ -94,24 +94,22 @@ From: ubuntu:20.04
   
   # Download the Matlab Compiled Runtime installer, install, clean up. The 
   # installed version of the runtime must match the Matlab version that was used
-  # to compile the code. Each version of the runtime has its own download URL:
+  # to compile the code. Each version of the runtime has its own download URL
+  # and installed location:
   # https://www.mathworks.com/products/compiler/matlab-runtime.html
+  runtime_url=https://ssd.mathworks.com/supportfiles/downloads/R2019b/Release/6/deployment_files/installer/complete/glnxa64/MATLAB_Runtime_R2019b_Update_6_glnxa64.zip
+  runtime_location=/usr/local/MATLAB/MATLAB_Runtime/v97
   mkdir /MCR
-  wget -nv -P /MCR \
-      https://ssd.mathworks.com/supportfiles/downloads/R2019b/Release/6/deployment_files/installer/complete/glnxa64/MATLAB_Runtime_R2019b_Update_6_glnxa64.zip
-  unzip -qq /MCR/MATLAB_Runtime_R2019b_Update_6_glnxa64.zip \
-      -d /MCR/MATLAB_Runtime_R2019b_Update_6_glnxa64
-  /MCR/MATLAB_Runtime_R2019b_Update_6_glnxa64/install \
-      -mode silent -agreeToLicense yes
-  rm -r /MCR/MATLAB_Runtime_R2019b_Update_6_glnxa64 \
-      /MCR/MATLAB_Runtime_R2019b_Update_6_glnxa64.zip
+  wget -nv -P /MCR ${runtime_url} -O /MCR/runtime_installer.zip
+  unzip -qq /MCR/runtime_installer.zip -d /MCR/runtime_installer
+  /MCR/runtime_installer/install -mode silent -agreeToLicense yes
+  rm -r /MCR/runtime_installer /MCR/runtime_installer.zip
   rmdir /MCR
 
   # We need to run the matlab executable now to extract the CTF archive, because
   # now is the only time the container is writeable. Each version of the runtime
   # also has its own particular installed location.
-  runtime_location=/usr/local/MATLAB/MATLAB_Runtime/v97
-  /opt/demo/matlab/bin/run_matlab_entrypoint.sh $runtime_location quit
+  /opt/demo/matlab/bin/run_matlab_entrypoint.sh ${runtime_location} quit
 
   # FSL. The centos7 version suits for Ubuntu 14-20. For available versions, see
   # https://fsl.fmrib.ox.ac.uk/fsldownloads/manifest.csv
@@ -144,13 +142,16 @@ From: ubuntu:20.04
 
   # Matlab 
   # We set Matlab's default shell, in case we call any shell commands from 
-  # Matlab. However we don't need to set the Matlab library path here, because 
-  # Matlab's auto-generated run_??.sh script does it for us.
-  MATLAB_SHELL=/bin/bash
+  # Matlab. We also set the runtime's installed location, as it's needed to run
+  # the compiled binary - note, this must match the runtime_location specified
+  # above in the 'post' section. However we don't need to set the Matlab library
+  # path here, because Matlab's auto-generated run_??.sh script does it for us.
+  export MATLAB_SHELL=/bin/bash
+  export MATLAB_RUNTIME=/usr/local/MATLAB/MATLAB_Runtime/v97
 
   # FSL
   # We set FSLDIR here, but the rest of FSL setup will have to be done at 
-  # runtime in the pipeline code:
+  # run time in the pipeline code:
   #       . ${FSLDIR}/etc/fslconf/fsl.sh
   #       export PATH=${FSLDIR}/bin:${PATH}
   export FSLDIR=/usr/local/fsl
