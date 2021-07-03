@@ -74,6 +74,6 @@ https://docs.github.com/en/github/managing-large-files/working-with-large-files
 
 ## Finalizing
 
-Write a useful and informative README! Here's an excellent example:
-https://github.com/MASILab/PreQual
+Write an informative README - so tedious, yet so helpful. Here's an excellent 
+example: https://github.com/MASILab/PreQual
 
