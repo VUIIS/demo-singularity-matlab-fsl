@@ -9,7 +9,7 @@
 # pipeline_entrypoint.sh --image_niigz /path/to/image.nii.gz --diameter_mm 30
 
 # This statement at the top of every bash script is helpful for debugging
-echo Running "${BASH_SOURCE}"
+echo Running $(basename "${BASH_SOURCE}")
 
 # Initialize defaults for any input parameters where that seems useful
 export diameter_mm=30
