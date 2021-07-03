@@ -35,16 +35,13 @@ main function that takes a structure as its sole input, with the structure
 containing whatever inputs are needed. See `matlab/src/matlab_main.m` for an 
 example of this.
 
-
 ### Test the Matlab entrypoint
 
 The script `matlab/src/test_matlab_entrypoint.m` is an example of how to do this.
 
-
 ### Compile the Matlab code
 
 `matlab/compile_matlab.sh`
-
 
 ### Test the compiled Matlab code
 
