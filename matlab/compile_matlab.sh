@@ -23,6 +23,8 @@ PATH=${MATLAB_ROOT}/bin:${PATH}
 #
 # Relative paths are specified here, assuming we're running this script from
 # the matlab/build directory.
+#
+# More info: https://www.mathworks.com/help/compiler/mcc.html
 mcc -m -v src/matlab_entrypoint.m \
     -N \
     -p ${MATLAB_ROOT}/toolbox/images \
