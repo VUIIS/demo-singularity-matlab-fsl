@@ -1,6 +1,9 @@
 # Demo singularity container for Matlab
 
-Here is the one way to organize a Matlab-based Singularity container - 
+This example container takes a Nifti image as input, zeroes out a hole in it of
+the specified diameter, and saves the result to a new Nifti file.
+
+This is one way to organize a Matlab-based Singularity container - 
 perhaps most easily conceived of as a series of wrappers around the main 
 codebase:
 
