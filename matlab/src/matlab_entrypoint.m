@@ -4,6 +4,12 @@ function matlab_entrypoint(varargin)
 % pipeline. Its purpose is to parse the command line arguments, then call
 % the main function that actually does the work.
 
+%% Just quit, if requested - needed for Singularity build
+if numel(varargin)==1 && strcmp(varargin{1},'quit') && isdeployed
+	disp('Exiting as requested')
+	exit
+end
+
 
 %% Parse the inputs and parameters
 
