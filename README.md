@@ -77,3 +77,9 @@ https://docs.github.com/en/github/managing-large-files/working-with-large-files
 Write an informative README - so tedious, yet so helpful. Here's an excellent 
 example: https://github.com/MASILab/PreQual
 
+Alternatively, git-ify some documentation like this:
+https://github.com/VUIIS/dax/tree/main/docs
+
+to get something like this:
+https://dax.readthedocs.io/en/latest/
+
