@@ -44,6 +44,8 @@ matlab_main(P.Results);
 
 
 %% Exit
+% But only if we're running the compiled executable. If we're testing in a
+% matlab session, exiting is not helpful.
 if isdeployed
 	exit
 end

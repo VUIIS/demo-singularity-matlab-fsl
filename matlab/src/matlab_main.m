@@ -8,6 +8,9 @@ function outimg_nii = matlab_main(inp)
 % Nifti read/write is handled this way:
 % https://github.com/VUIIS/spm_readwrite_nii
 
+% Convert the numerical argument from a string
+diameter_mm = str2double(inp.diameter_mm);
+
 % Read the image
 V = spm_vol(inp.image_niigz);
 if numel(V)>1
@@ -21,13 +24,14 @@ origsize = size(Y);
 Yr = Y(:)';
 
 % Find the center of the image in mm
-ctr = (max(XYZ,2)-min(XYZ,2)) / 2;
+ctr = (max(XYZ,[],2)-min(XYZ,[],2))/2 + min(XYZ,[],2);
 
 % Compute the squared distance from center for each voxel
-dst = (XYZ-ctr).^2;
+dst = sum((XYZ-ctr).^2);
 
 % Find voxels within the specified distance and zero them out
-inds = dst <= inp.diameter_mm;
+inds = dst <= diameter_mm.^2;
+fprintf('Zeroing out %d of %d voxels\n',sum(inds),numel(inds));
 Yr(inds) = 0;
 
 % Reshape to the original size
@@ -35,11 +39,10 @@ Yout = reshape(Yr',origsize);
 
 % Write to a file in the specified output directory. We are hard-coding the
 % output filename here - simple and convenient, but we could do something
-% more versatile if we needed to. The output filename is passed as a return
-% value in case we want it.
+% more versatile if we needed to, e.g. take a specific filename for the
+% output file as an input argument. The output filename is passed as a
+% return value in case we want it.
 Vout = V;
 outimg_nii = fullfile(inp.out_dir,'holed_image.nii');
 Vout.fname = outimg_nii;
 spm_write_vol(Vout,Yout);
-
-
