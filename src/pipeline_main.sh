@@ -23,5 +23,8 @@ run_matlab_entrypoint.sh "${MATLAB_ROOT}" \
     scan "${scan}" \
     out_dir "${out_dir}"
 
-# Finally the postprocessing and FSL based PDF creation
+# FSL based PDF creation
+make_pdf.sh
+
+# Finally the postprocessing
 postprocessing.sh
