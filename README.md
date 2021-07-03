@@ -1,15 +1,19 @@
 # Demo singularity container for Matlab
 
-    Singularity
-    src/
-        pipeline_entrypoint.sh
-        pipeline_main.sh
-    matlab/
-        src/
-            matlab_entrypoint.m
-            matlab_main.m
-        build/
-        bin/
+Here is the one way to organize a Matlab-based Singularity container - 
+perhaps most easily conceived of as a series of wrappers around the main 
+codebase:
+
+    Singularity container
+    |   X11 wrapper
+    |   |   Primary entrypoint (shell script)
+    |   |   |   Shell script preprocessing
+    |   |   |   Matlab processing (compiled)
+    |   |   |   |   Matlab entrypoint
+    |   |   |   |       Matlab main function
+    |   |   |   \           Matlab sub-functions / codebase
+    \   \   \   Shell script postprocessing
+
 
 ## Matlab part
 
@@ -17,6 +21,11 @@
 
 Write Matlab code that does what's needed. Put it in `matlab/src`.
 
+A popular toolbox for reading and writing Nifti files that's available on Matlab
+Central has a lot of insidious bugs and is not being maintained. Matlab's own 
+functions for Nifti files are quite limited. Here is an alternative, which is
+used in this example: 
+https://github.com/VUIIS/spm_readwrite_nii
 
 ### Write the Matlab entrypoint
 
@@ -41,13 +50,4 @@ The script `matlab/src/test_matlab_entrypoint.m` is an example of how to do this
 
 `matlab/test_compiled_matlab.sh`
 
-
-
-
-## Reading and writing Nifti files in Matlab
-
-A popular toolbox for reading and writing Nifti files that's available on Matlab
-Central has a lot of insidious bugs and is not being maintained. Matlab's own 
-functions for Nifti files are quite limited. Here is an alternative: 
-https://github.com/VUIIS/spm_readwrite_nii
 
