@@ -43,15 +43,6 @@ From: ubuntu:20.04
 
 %post
 
-  # See if any file in the matlab/src directory is newer than the executable
-  files=`find /opt/demo/matlab/src -name \*`
-  for f in ${files}; do
-    if [ "${f}" -nt /opt/demo/matlab/bin/run_matlab_entrypoint.sh ]]; then
-      echo Source code newer than binary
-      exit 1
-    fi
-  done
-
   # Make sure we get the newest versions of OS packages and the package data. 
   # Note, this means if we build the container twice with some time in between, 
   # versions of things will likely be different. We could specify particular 
