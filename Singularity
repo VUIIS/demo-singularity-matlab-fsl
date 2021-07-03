@@ -163,7 +163,7 @@ From: ubuntu:20.04
 
 %runscript
 
-  # We just call our wrapper, passing along all the command line arguments that
-  # were given at the singularity run command line.
-  xwrapper.sh "$@"
+  # We just call our entrypoint, passing along all the command line arguments 
+  # that were given at the singularity run command line.
+  pipeline_entrypoint.sh "$@"
 
