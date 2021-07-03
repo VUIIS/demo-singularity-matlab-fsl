@@ -135,3 +135,9 @@ version.
 
 You can run `matlab/check_for_compilation.sh` first to make sure there's no 
 source code newer than the compiled executable.
+
+
+## Running the container
+
+See `test_singularity_container.sh` for an example run command and some
+important info.
