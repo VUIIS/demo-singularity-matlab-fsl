@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 #
 # Primary entrypoint for our pipeline. This just parses the command line 
-# arguments, storing them in environment variables for easy access later, and
-# then calls the rest.
+# arguments, exporting them in environment variables for easy access
+# by other shell scripts later. Then it calls the rest of the pipeline.
 #
 # Example usage:
 # 
 # pipeline_entrypoint.sh --image_niigz /path/to/image.nii.gz --diameter_mm 30
+
+# This statement at the top of every bash script is helpful for debugging
+echo Running "${BASH_SOURCE}"
 
 # Initialize defaults for any input parameters where that seems useful
 export diameter_mm=30

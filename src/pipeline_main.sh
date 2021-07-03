@@ -5,6 +5,8 @@
 # commands to move files around, use FSL for some pre- or post-processing, and 
 # use fsleyes after the matlab has finished to create a QA PDF.
 
+echo Running "${BASH_SOURCE}"
+
 # First, shell script based preprocessing
 preprocessing.sh
 

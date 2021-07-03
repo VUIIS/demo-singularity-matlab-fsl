@@ -5,6 +5,8 @@
 # style: containers should probably not ever change the input files directly,
 # but rather copy them and work on them (and perhaps clean up afterwards).
 
+echo Running "${BASH_SOURCE}"
+
 # Copy the input nifti to the working directory (out_dir) with a hard-coded
 # filename. Hardcoding filenames like this makes programming a lot easier, and
 # the loss of flexibility is usually not a problem for a containerized pipeline
