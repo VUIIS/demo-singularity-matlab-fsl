@@ -5,6 +5,8 @@ function outimg_nii = matlab_main(inp)
 % for this simple example, but for something more complex we probably want
 % to break it up into more functions/files.
 %
+% See matlab_entrypoint.m for the list of inputs that are expected in inp.
+%
 % Nifti read/write is handled this way:
 % https://github.com/VUIIS/spm_readwrite_nii
 
