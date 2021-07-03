@@ -14,6 +14,9 @@ codebase:
     |   |   |   \           Matlab sub-functions / codebase
     \   \   \   Shell script postprocessing
 
+The process of putting it together is described below. The scripts and code in
+this repository are extensively commented, so if something isn't clear here,
+it's probably explained in the example code.
 
 ## Matlab part
 
