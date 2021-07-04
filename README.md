@@ -143,8 +143,11 @@ https://dax.readthedocs.io/en/latest/
 
 ## Building the container
 
-Be sure the Matlab code is newly compiled, see above. Then from the root
-directory of the working copy of the repo, run
+Be sure the Matlab code is newly compiled, see above. You can run 
+`matlab/check_for_compilation.sh` first to make sure there's no source code
+newer than the compiled executable.
+
+Then from the root directory of the working copy of the repo, run
 
     singularity build <container_name>.simg Singularity
 
@@ -152,9 +155,6 @@ Good practice: before you build, create a release on github (if using github).
 Be sure that tag is checked out in your working copy of the repo. Give the 
 container a versioned name like `demo_v1.0.0.simg` that matches the release 
 version.
-
-You can run `matlab/check_for_compilation.sh` first to make sure there's no 
-source code newer than the compiled executable.
 
 External binaries such as Matlab Runtime and FSL can be included by copying 
 local copies into the container in the Singularity file's `%files` section. This 
