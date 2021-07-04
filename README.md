@@ -143,7 +143,8 @@ https://dax.readthedocs.io/en/latest/
 
 ## Building the container
 
-From the root directory of the working copy of the repo, run
+Be sure the Matlab code is newly compiled, see above. Then from the root
+directory of the working copy of the repo, run
 
     singularity build <container_name>.simg Singularity
 
