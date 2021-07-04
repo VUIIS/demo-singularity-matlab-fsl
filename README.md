@@ -68,10 +68,10 @@ The one at the end exits matlab when the function is finished. Without it, the
 running Matlab process will stop, but not release execution back to the calling 
 script.
 
-
 ### Test the Matlab entrypoint
 
-The script `matlab/src/test_matlab_entrypoint.m` is an example of how to do this.
+The script `matlab/src/test_matlab_entrypoint.m` is an example of how to do
+this. The appropriate Matlab must be installed on the testing computer.
 
 ### Compile the Matlab code
 
@@ -81,7 +81,8 @@ https://docs.github.com/en/github/managing-large-files/working-with-large-files
 
 ### Test the compiled Matlab code
 
-`matlab/test_compiled_matlab.sh`
+`matlab/test_compiled_matlab.sh`. The appropriate Matlab Runtime must be
+installed on the testing computer.
 
 
 ## Shell script part
@@ -155,7 +156,7 @@ You can run `matlab/check_for_compilation.sh` first to make sure there's no
 source code newer than the compiled executable.
 
 External binaries such as Matlab Runtime and FSL can be included by copying 
-local copies into the container in the Singularity file's "files" section. This 
+local copies into the container in the Singularity file's `%files` section. This 
 tends to be a little faster when multiple builds are needed during debugging,
 and this is what's being done in the example Singularity file. Alternatively, 
 these can be downloaded from their source at build time - there are some 
