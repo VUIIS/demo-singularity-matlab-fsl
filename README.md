@@ -195,16 +195,18 @@ important info.
 
 ### Inputs
 
+Paths to files are relative to the container.
+
     --t1_niigz        A T1 image
     --seg_niigz       Its corresponding segmentation from e.g. slant pipeline
-    --diameter_mm     Diameter of the hole to zero out, in mm
+    --diameter_mm     Diameter of the hole to zero out, in mm (default 30)
     
     --project         Labels from XNAT, used only to annotate the QA PDF
-    --subject
+    --subject         (default UNK_*)
     --session
     --scan
     
-    --out_dir         Where outputs will be stored
+    --out_dir         Where outputs will be stored (default /OUTPUTS)
 
 ### Outputs
 
