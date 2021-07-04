@@ -144,6 +144,13 @@ version.
 You can run `matlab/check_for_compilation.sh` first to make sure there's no 
 source code newer than the compiled executable.
 
+External binaries such as Matlab Runtime and FSL can be included by copying 
+local copies into the container in the Singularity file's "files" section. This 
+tends to be a little faster when multiple builds are needed during debugging,
+and this is what's being done in the example Singularity file. Alternatively, 
+these can be downloaded from their source at build time - there are some 
+commented-out sections in the Singularity file showing how that is done.
+
 
 ## Running the container
 
