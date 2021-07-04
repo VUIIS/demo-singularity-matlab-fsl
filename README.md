@@ -155,8 +155,9 @@ in an easily understandable way: `src/finalize.sh`.
 
 ## Documentation
 
-Write an informative README - so tedious, yet so helpful. Here's an excellent 
-example: https://github.com/MASILab/PreQual
+Write an informative README - so tedious, yet so helpful. Include the 
+appropriate citations for all the methods and software you have used. Here's an
+excellent example: https://github.com/MASILab/PreQual
 
 Alternatively, git-ify some documentation like this:
 https://github.com/VUIIS/dax/tree/main/docs
