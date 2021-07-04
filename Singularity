@@ -8,7 +8,7 @@ From: ubuntu:20.04
   Demo of a singularity container that runs a Matlab program. FSL is also 
   included, as it's a handy resource for a lot of image processing and figure
   creation.
-  Info and usage: /opt/demo/README.md
+  Info and usage: /opt/pipeline/README.md
 
 
 %setup
@@ -16,7 +16,7 @@ From: ubuntu:20.04
   # Create an installation directory for the codebase. We can often finagle this
   # in the 'files' section and forgo the 'setup' section entirely, but it's 
   # clearer this way.
-  mkdir -p "${SINGULARITY_ROOTFS}"/opt/demo
+  mkdir -p "${SINGULARITY_ROOTFS}"/opt/pipeline
 
 
 %files
@@ -32,14 +32,14 @@ From: ubuntu:20.04
   # container for reference. Don't let these get out of sync, i.e. don't change
   # the Matlab source code and then forget to recompile it before building the
   # container.
-  src                          /opt/demo
-  matlab                       /opt/demo
-  README.md                    /opt/demo
+  src                          /opt/pipeline
+  matlab                       /opt/pipeline
+  README.md                    /opt/pipeline
 
   # If we're installing MCR and FSL from local copies, we need to copy those
-  # into the container as well
-  MATLAB_Runtime_R2019b_Update_6_glnxa64.zip   /opt/demo
-  fsl-6.0.4-centos7_64.tar.gz                  /opt/demo
+  # into the container as well. We'll delete them after the installs.
+  MATLAB_Runtime_R2019b_Update_6_glnxa64.zip   /opt/pipeline
+  fsl-6.0.4-centos7_64.tar.gz                  /opt/pipeline
   
  
 %labels
@@ -91,7 +91,7 @@ From: ubuntu:20.04
   
   # Alternatively, we can install the MCR from a local copy of the file if there
   # is one, and save the download time during build.
-  runtime_file=/opt/demo/MATLAB_Runtime_R2019b_Update_6_glnxa64.zip
+  runtime_file=/opt/pipeline/MATLAB_Runtime_R2019b_Update_6_glnxa64.zip
   runtime_location=/usr/local/MATLAB/MATLAB_Runtime/v97
   mkdir /MCR
   unzip -qq "${runtime_file}" -d /MCR/runtime_installer
@@ -101,7 +101,7 @@ From: ubuntu:20.04
   
   # We need to run the matlab executable now to extract the CTF archive, because
   # now is the only time the container is writeable.
-  /opt/demo/matlab/bin/run_matlab_entrypoint.sh ${runtime_location} quit
+  /opt/pipeline/matlab/bin/run_matlab_entrypoint.sh ${runtime_location} quit
 
   # FSL. The centos7 version suits for Ubuntu 14-20. For available versions, see
   # https://fsl.fmrib.ox.ac.uk/fsldownloads/manifest.csv
@@ -113,7 +113,7 @@ From: ubuntu:20.04
   #cd -
 
   # Or we can install FSL from a local file
-  fslfile=/opt/demo/fsl-6.0.4-centos7_64.tar.gz
+  fslfile=/opt/pipeline/fsl-6.0.4-centos7_64.tar.gz
   tar -zxf ${fslfile} -C /usr/local
   rm ${fslfile}
 
@@ -156,7 +156,7 @@ From: ubuntu:20.04
   # Path
   # We add the src directory, which contains shell scripts etc; and the 
   # matlab/bin directory, which contains the compiled Matlab binary.
-  export PATH=/opt/demo/src:/opt/demo/matlab/bin:${PATH}
+  export PATH=/opt/pipeline/src:/opt/pipeline/matlab/bin:${PATH}
 
 
 %runscript
