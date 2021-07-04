@@ -12,6 +12,8 @@ problem-solving from the inside out.
 This container also includes an installation of FSL, which has a lot of handy
 tools including fsleyes to make the QA PDF. The FSL parts could be removed from
 the Singularity file if FSL isn't used, to end up with a smaller container.
+Contrariwise, all the Matlab parts could be removed to end up with an FSL-only
+container.
 
     Singularity container
     |   Primary entrypoint (shell script)
