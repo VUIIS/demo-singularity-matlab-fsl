@@ -67,12 +67,12 @@ containing whatever inputs are needed. See `matlab/src/matlab_main.m` for an
 example of this.
 
 Couple of things to note in the entrypoint code are the quit/exit sections at
-beginning and end. The one at the beginning allows the executable to run during 
+beginning and end. The bit at the beginning allows the executable to run during 
 the container build, without actually doing anything - this is needed to extract
-the CTF archive into the container at the only time the container is writeable.
-The one at the end exits matlab when the function is finished. Without it, the 
-running Matlab process will finish, but not release execution back to the 
-calling script.
+the CTF archive into the container at the only time the container is writeable
+(h/t https://twitter.com/annash128 for figuring that one out). The bit at the 
+end exits matlab when the function is finished. Without it, the running Matlab 
+process won't release execution back to the calling script when it's done.
 
 ### Test the Matlab entrypoint
 
@@ -186,6 +186,7 @@ tends to be a little faster when multiple builds are needed during debugging,
 and this is what's being done in the example Singularity file. Alternatively, 
 these can be downloaded from their source at build time - there are some 
 commented-out sections in the Singularity file showing how that is done.
+(Thanks https://github.com/praitayini for exploring this to the bottom)
 
 
 ## Running the container
