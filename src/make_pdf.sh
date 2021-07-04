@@ -5,10 +5,6 @@
 
 echo Running $(basename "${BASH_SOURCE}")
 
-# Initialize FSL
-. ${FSLDIR}/etc/fslconf/fsl.sh
-PATH=${FSLDIR}/bin:${PATH}
-
 # Some useful text to put on the PDF pages
 thedate=$(date)
 infostring="${project} ${subject} ${session} ${scan}"

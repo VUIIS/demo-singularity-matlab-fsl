@@ -124,7 +124,7 @@ From: ubuntu:20.04
   
   # Run the FSL python installer, needed for fsleyes among other things. A clue
   # that we forgot this is an imglob error at runtime.
-  ${FSLDIR}/etc/fslconf/fslpython_install.sh
+  #${FSLDIR}/etc/fslconf/fslpython_install.sh
   
   # Create a few directories to use as bind points when we run the container
   mkdir /INPUTS

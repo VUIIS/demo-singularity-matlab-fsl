@@ -7,6 +7,10 @@
 
 echo Running $(basename "${BASH_SOURCE}")
 
+# Initialize FSL
+. ${FSLDIR}/etc/fslconf/fsl.sh
+export PATH=${FSLDIR}/bin:${PATH}
+
 # Copy inputs to the working directory
 copy_inputs.sh
 
