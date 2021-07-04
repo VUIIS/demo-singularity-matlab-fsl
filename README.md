@@ -43,7 +43,7 @@ Dependencies in terms of the actual files:
 
 The process of putting it together is described below. The scripts and code in
 this repository are extensively commented, so if something isn't clear here,
-it's probably explained in the example code.
+it's probably explained in the Singularity file or the example code.
 
 
 ## Matlab part
