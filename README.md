@@ -153,8 +153,8 @@ Then from the root directory of the working copy of the repo, run
 
 Good practice: before you build, create a release on github (if using github).
 Be sure that tag is checked out in your working copy of the repo. Give the 
-container a versioned name like `demo_v1.0.0.simg` that matches the release 
-version.
+container a versioned name like `demo-singularity-matlab_v1.0.0.simg` that 
+matches the repository name and release version.
 
 External binaries such as Matlab Runtime and FSL can be included by copying 
 local copies into the container in the Singularity file's `%files` section. This 
