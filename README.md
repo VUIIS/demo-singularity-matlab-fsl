@@ -132,7 +132,7 @@ example, a display of the segmented ROIs overlaid on the T1 is created using
 fsleyes and ImageMagick, `src/make_pdf.sh`.
 
 PDF creation can be done in Matlab instead. An example with some tricks to make 
-it look good, including a .fig file painstakingly made with Matlab's GUIDE, is
+it look good, including a `.fig` file painstakingly made with Matlab's GUIDE, is
 https://github.com/baxpr/connprep/blob/855dadc/src/connectivity_filter.m#L271
 
 ### Finalizing the output
