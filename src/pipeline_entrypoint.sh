@@ -13,10 +13,10 @@ echo Running $(basename "${BASH_SOURCE}")
 
 # Initialize defaults for any input parameters where that seems useful
 export diameter_mm=30
-export project=TESTPROJ
-export subject=TESTSUBJ
-export session=TESTSESS
-export scan=TESTSCAN
+export project=UNK_PROJ
+export subject=UNK_SUBJ
+export session=UNK_SESS
+export scan=UNK_SCAN
 export out_dir=/OUTPUTS
 
 # Parse input options
