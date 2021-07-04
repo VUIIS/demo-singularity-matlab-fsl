@@ -99,6 +99,12 @@ example in `matlab/src/matlab_entrypoint.m`. But it's often easier to move
 files, create the QA PDF, etc using shell script and FSL. So that's what we are 
 doing in this example. All this code is in the `src` directory.
 
+All the shell scripts called from `src/pipeline_entrypoint.sh` "know" the 
+environment variables that are exported there. This is a very convenient way to
+pass along the input arguments, although it isn't entirely transparent, because
+there's no hint in the shell scripts where the variables' values are coming from
+unless we explain it in the comments.
+
 ### Main entrypoint
 
 This is `src/pipeline_entrypoint.sh`. It uses bash to parse the command line
@@ -110,10 +116,13 @@ often needed by matlab and required for fsleyes.
 ### Copy inputs
 
 We copy input files to the output/working directory so we don't mess them up. 
-This also is an opportunity to rename them to something consistent. We generally
-assume the output directory starts out empty and will not be interfered with by
-any other processes - this is true for XNAT/DAX, but something to be aware of in
-other contexts.
+This also is an opportunity to rename them to something consistent. It's very
+convenient to hard-code the filenames so we don't have to store and manipulate
+filenames in environment variables or the like.
+
+We generally assume the output directory starts out empty and will not be 
+interfered with by any other processes - this is true for XNAT/DAX, but 
+important to be aware of in other contexts.
 
 ### Preprocessing
 
