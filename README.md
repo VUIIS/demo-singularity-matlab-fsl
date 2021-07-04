@@ -175,3 +175,23 @@ commented-out sections in the Singularity file showing how that is done.
 
 See `test_singularity_container.sh` for an example run command and some
 important info.
+
+### Inputs
+
+    --t1_niigz        A T1 image
+    --seg_niigz       Its corresponding segmentation from e.g. slant pipeline
+    --diameter_mm     Diameter of the hole to zero out, in mm
+    
+    --project         Labels from XNAT, used only to annotate the QA PDF
+    --subject
+    --session
+    --scan
+    
+    --out_dir         Where outputs will be stored
+
+### Outputs
+
+    PDF/holed_image.pdf           QA report
+    HOLED_T1/holed_t1.nii.gz      T1 image with a hole in it
+    HOLED_SEG/holed_seg.nii.gz    Segmentation with a hole in it
+
