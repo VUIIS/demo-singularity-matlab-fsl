@@ -118,7 +118,10 @@ often needed by matlab and required for fsleyes.
 We copy input files to the output/working directory so we don't mess them up. 
 This also is an opportunity to rename them to something consistent. It's very
 convenient to hard-code the filenames so we don't have to store and manipulate
-filenames in environment variables or the like.
+filenames in environment variables or the like. Also, this makes it easy to
+produce output files with consistent names - outputs of one pipeline may serve
+as inputs to another, and it's much easier to manage this if filenames are the
+same for every run, or at least consistent.
 
 We generally assume the output directory starts out empty and will not be 
 interfered with by any other processes - this is true for XNAT/DAX, but 
