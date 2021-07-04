@@ -184,9 +184,9 @@ External binaries such as Matlab Runtime and FSL can be included by copying
 local copies into the container in the Singularity file's `%files` section. This 
 tends to be a little faster when multiple builds are needed during debugging,
 or necessary for files that are not available to download, and this is what's 
-being done in the example Singularity file. Alternatively, these can be 
-downloaded from their source at build time - there are some commented-out 
-sections in the Singularity file showing how that is done. (Thanks 
+being done in the example Singularity file. Alternatively, binaries or install
+files can be downloaded from their source at build time - there are some 
+commented-out sections in the Singularity file showing how that is done. (Thanks 
 https://github.com/praitayini for exploring this to the bottom)
 
 
