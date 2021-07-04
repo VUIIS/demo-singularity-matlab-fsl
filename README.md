@@ -132,7 +132,7 @@ https://dax.readthedocs.io/en/latest/
 
 ## Building the container
 
-Simply
+From the root directory of the working copy of the repo, run
 
     singularity build <container_name>.simg Singularity
 
