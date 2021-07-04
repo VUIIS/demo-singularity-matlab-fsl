@@ -19,13 +19,15 @@ PATH=${MATLAB_ROOT}/bin:${PATH}
 # Compile. Use -a to include an entire directory and all its contents,
 # recursively. We use this for our own code. Use -N to leave out toolboxes to
 # reduce the size of the binary. Individual toolboxes can be added back in with
-# -p if needed.
+# -p if needed. Use -C to avoid embedding the archive in the binary - there 
+# won't be disk space available in the container to extract it at run time, so
+# we extract it ahead of time during the singularity build.
 #
 # Relative paths are specified here, assuming we're running this script from
 # the matlab/build directory.
 #
 # More info: https://www.mathworks.com/help/compiler/mcc.html
-mcc -m -v src/matlab_entrypoint.m \
+mcc -m -C -v src/matlab_entrypoint.m \
     -N \
     -p ${MATLAB_ROOT}/toolbox/images \
     -a src \

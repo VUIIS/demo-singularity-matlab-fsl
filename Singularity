@@ -100,7 +100,8 @@ From: ubuntu:20.04
   rmdir /MCR
   
   # We need to run the matlab executable now to extract the CTF archive, because
-  # now is the only time the container is writeable.
+  # now is the only time the container is writeable. The matlab entrypoint has
+  # a bit at the beginning that makes this work.
   /opt/pipeline/matlab/bin/run_matlab_entrypoint.sh ${runtime_location} quit
 
   # FSL. The centos7 version suits for Ubuntu 14-20. For available versions, see
