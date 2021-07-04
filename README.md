@@ -71,8 +71,8 @@ beginning and end. The one at the beginning allows the executable to run during
 the container build, without actually doing anything - this is needed to extract
 the CTF archive into the container at the only time the container is writeable.
 The one at the end exits matlab when the function is finished. Without it, the 
-running Matlab process will stop, but not release execution back to the calling 
-script.
+running Matlab process will finish, but not release execution back to the 
+calling script.
 
 ### Test the Matlab entrypoint
 
