@@ -93,25 +93,27 @@ installed on the testing computer.
 
 ## Shell script part
 
-All of this could be done in the matlab part, if desired. If so, parsing inputs
-should be done following the example in `matlab/src/matlab_entrypoint.m`. But 
-it's often easier to move files, create the QA PDF, etc using shell script and 
-FSL. So that's what we are doing in this example. All this code is in the `src`
-directory.
+All of the below procedures could be done in the matlab part, if desired,
+instead of in shell script. If so, parsing inputs should be done following the
+example in `matlab/src/matlab_entrypoint.m`. But it's often easier to move
+files, create the QA PDF, etc using shell script and FSL. So that's what we are 
+doing in this example. All this code is in the `src` directory.
 
 ### Main entrypoint
 
 This is `src/pipeline_entrypoint.sh`. It uses bash to parse the command line
 inputs and export them to environment variables so they're accessible. Then it
-calls the primary main shell script `src/pipeline_main.sh` which in turn calls
+calls the primary shell script `src/pipeline_main.sh` which in turn calls
 everything else. The main script is run in xvfb to provide a virtual display,
 often needed by matlab and required for fsleyes.
 
 ### Copy inputs
 
-We copy input files to the output/working directory so we don't mess them up. We
-generally assume the output directory starts out empty and will not be 
-interfered with by any other processes - certainly this is true for XNAT/DAX.
+We copy input files to the output/working directory so we don't mess them up. 
+This also is an opportunity to rename them to something consistent. We generally
+assume the output directory starts out empty and will not be interfered with by
+any other processes - this is true for XNAT/DAX, but something to be aware of in
+other contexts.
 
 ### Preprocessing
 
@@ -120,8 +122,7 @@ FSL steps or similar could be put here: `src/preprocessing.sh`.
 
 ### Postprocessing
 
-There isn't any postprocessing for this example, but any sort of non-matlab 
-work needed after the matlab part is done could be performed here: 
+There isn't any postprocessing for this example either, but there could be: 
 `src/postprocessing.sh`.
 
 ### PDF creation
@@ -129,6 +130,10 @@ work needed after the matlab part is done could be performed here:
 All assessors on VUIIS XNAT require a PDF QA report of some sort. For this
 example, a display of the segmented ROIs overlaid on the T1 is created using
 fsleyes and ImageMagick, `src/make_pdf.sh`.
+
+PDF creation can be done in Matlab instead. An example with some tricks to make 
+it look good, including a .fig file painstakingly made with Matlab's GUIDE, is
+https://github.com/baxpr/connprep/blob/855dadc/src/connectivity_filter.m#L271
 
 ### Finalizing the output
 
