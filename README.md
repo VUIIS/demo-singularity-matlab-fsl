@@ -1,4 +1,4 @@
-# Demo singularity container for Matlab
+# Demo singularity container for Matlab plus FSL
 
 This example container takes a Nifti image as input, zeroes out a hole in it of
 the specified diameter, and saves the result to a new Nifti file. Quick,
