@@ -9,6 +9,9 @@ perhaps most easily conceived of as a series of wrappers around the main
 codebase. Done this way, it's fairly easy to work on each piece in isolation,
 problem-solving from the inside out.
 
+This container also includes an installation of FSL, which has a lot of handy
+tools including fsleyes to make the QA PDF.
+
     Singularity container
     |   Primary entrypoint (shell script)
     |   |   X11 wrapper
