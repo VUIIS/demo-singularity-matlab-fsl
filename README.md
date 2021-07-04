@@ -60,6 +60,15 @@ main function that takes a structure as its sole input, with the structure
 containing whatever inputs are needed. See `matlab/src/matlab_main.m` for an 
 example of this.
 
+Couple of things to note in the entrypoint code are the quit/exit sections at
+beginning and end. The one at the beginning allows the executable to run during 
+the container build, without actually doing anything - this is needed to extract
+the CTF archive into the container at the only time the container is writeable.
+The one at the end exits matlab when the function is finished. Without it, the 
+running Matlab process will stop, but not release execution back to the calling 
+script.
+
+
 ### Test the Matlab entrypoint
 
 The script `matlab/src/test_matlab_entrypoint.m` is an example of how to do this.
