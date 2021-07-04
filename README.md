@@ -23,6 +23,7 @@ Dependencies in terms of the actual files:
     Singularity
         src/pipeline_entrypoint.sh
             src/pipeline_main.sh
+                src/copy_inputs.sh
                 src/preprocessing.sh
                 matlab/bin/run_matlab_entrypoint.sh
                     matlab/bin/matlab_entrypoint
@@ -87,11 +88,16 @@ calls the primary main shell script `src/pipeline_main.sh` which in turn calls
 everything else. The main script is run in xvfb to provide a virtual display,
 often needed by matlab and required for fsleyes.
 
+### Copy inputs
+
+We copy input files to the output/working directory so we don't mess them up. We
+generally assume the output directory starts out empty and will not be 
+interfered with by any other processes - certainly this is true for XNAT/DAX.
+
 ### Preprocessing
 
-For this example, the only preprocessing is to copy the input images to the
-output/working directory: `src/preprocessing.sh`. But any sort of non-matlab 
-work can be done here ahead of running the matlab part.
+For this example, there is no preprocessing before the matlab part. But initial 
+FSL steps or similar could be put here: `src/preprocessing.sh`.
 
 ### Postprocessing
 

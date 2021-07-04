@@ -7,7 +7,10 @@
 
 echo Running $(basename "${BASH_SOURCE}")
 
-# First, shell script based preprocessing
+# Copy inputs to the working directory
+copy_inputs.sh
+
+# Shell script based preprocessing
 preprocessing.sh
 
 # Then the matlab. It is written so that we must pass the inputs as command
