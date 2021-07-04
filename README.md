@@ -76,9 +76,10 @@ https://docs.github.com/en/github/managing-large-files/working-with-large-files
 
 ## Shell script part
 
-All of this could be done in the matlab part, if desired. But it's often easier
-to move files, create the QA PDF, etc using shell script and FSL. So that's what
-we are doing in this example.
+All of this could be done in the matlab part, if desired. If so, parsing inputs
+should be done following the example in `matlab/src/matlab_entrypoint.m`. But 
+it's often easier to move files, create the QA PDF, etc using shell script and 
+FSL. So that's what we are doing in this example.
 
 ### Main entrypoint
 
