@@ -123,8 +123,10 @@ From: ubuntu:20.04
   . ${FSLDIR}/etc/fslconf/fsl.sh
   export PATH=${FSLDIR}/bin:${PATH}
   
-  # Run the FSL python installer, needed for fsleyes among other things. A clue
-  # that we forgot this is an imglob error at runtime.
+  # Run the FSL python installer, needed for fsleyes among other things. This 
+  # is normally done in the post_install phase when FSL's installer is run, but
+  # we do it manually here. A clue that we forgot this is an imglob error at
+  # runtime.
   ${FSLDIR}/etc/fslconf/fslpython_install.sh
   
   # Create a few directories to use as bind points when we run the container
