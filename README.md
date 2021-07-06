@@ -225,6 +225,9 @@ Paths to files are relative to the container.
 ## Running the container with DAX
 
 With a suitable configuration file, DAX (https://github.com/VUIIS/dax) can run this on a cluster.
-Instructions are here: https://dax.readthedocs.io/en/latest/processors.html An example is here: 
+
+Instructions are here: https://dax.readthedocs.io/en/latest/processors.html
+
+An example is here: 
 https://github.com/VUIIS/dax_yaml_processor_examples/blob/master/demo-matfsl_v1.0.0_processor.yaml
 
