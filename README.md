@@ -221,3 +221,10 @@ Paths to files are relative to the container.
     HOLED_T1/holed_t1.nii.gz      T1 image with a hole in it
     HOLED_SEG/holed_seg.nii.gz    Segmentation with a hole in it
 
+
+## Running the container with DAX
+
+With a suitable configuration file, DAX (https://github.com/VUIIS/dax) can run this on a cluster.
+An example is here: 
+https://github.com/VUIIS/dax_yaml_processor_examples/blob/master/demo-matfsl_v1.0.0_processor.yaml
+
