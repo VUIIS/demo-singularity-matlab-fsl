@@ -13,7 +13,7 @@
 # won't have space and a confusing memory error or crash will be the result.
 
 singularity run --cleanenv --contain \
-    --home INPUTS \
+    --home $(pwd -P)/INPUTS \
     --bind INPUTS:/tmp \
     --bind INPUTS:/INPUTS \
     --bind OUTPUTS:/OUTPUTS \

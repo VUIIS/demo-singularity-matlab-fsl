@@ -20,7 +20,7 @@ preprocessing.sh
 # Then the matlab. It is written so that we must pass the inputs as command
 # line arguments, although we could use matlab's getenv to pull them from the
 # environment instead if desired.
-run_matlab_entrypoint.sh "${MATLAB_ROOT}" \
+run_matlab_entrypoint.sh "${MATLAB_RUNTIME}" \
     t1_niigz "${out_dir}"/t1.nii.gz \
     seg_niigz "${out_dir}"/seg.nii.gz \
     diameter_mm "${diameter_mm}" \
