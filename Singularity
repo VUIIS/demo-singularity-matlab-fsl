@@ -96,7 +96,7 @@ From: ubuntu:20.04
   #            libjpeg62-turbo ->  libjpeg-turbo8
   #            libmng1         ->  libmng2
   apt install -y \
-    wget python-minimal libgomp1 ca-certificates \
+    wget python2-minimal libgomp1 ca-certificates \
     libglu1-mesa libgl1-mesa-glx libsm6 libice6 libxt6 \
     libjpeg-turbo8 libpng16-16 libxrender1 libxcursor1 \
     libxinerama1 libfreetype6 libxft2 libxrandr2 libmng2 \
