@@ -55,7 +55,8 @@ Try building this from scratch, to find any immediate issues:
    comment out the installer files in the '%files' section and uncomment the download
    lines ('wget') later - this way they will be downloaded as part of the build.
 
-2. Build the container, following the instructions below.
+2. Build the container, following the instructions below
+   https://github.com/baxpr/demo-singularity-matlab-fsl#building-the-container
 
 
 ## Matlab part
