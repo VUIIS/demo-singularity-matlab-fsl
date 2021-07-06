@@ -91,8 +91,17 @@ From: ubuntu:20.04
   # a bit at the beginning that makes this work.
   /opt/pipeline/matlab/bin/run_matlab_entrypoint.sh ${mcr_location} quit
 
-  # FSL 6.0.4 requires these two additional packages
-  apt install -y libopenblas-base language-pack-en
+  # FSL dependencies, h/t https://github.com/MPIB/singularity-fsl
+  #            debian              ubuntu
+  #            libjpeg62-turbo ->  libjpeg-turbo8
+  #            libmng1         ->  libmng2
+  apt install -y \
+    wget python-minimal libgomp1 ca-certificates \
+    libglu1-mesa libgl1-mesa-glx libsm6 libice6 libxt6 \
+    libjpeg-turbo8 libpng16-16 libxrender1 libxcursor1 \
+    libxinerama1 libfreetype6 libxft2 libxrandr2 libmng2 \
+    libgtk2.0-0 libpulse0 libasound2 libcaca0 libopenblas-base \
+    language-pack-en bzip2 dc bc
 
   # FSL. The centos7 version suits for Ubuntu 14-20. For available versions, see
   # https://fsl.fmrib.ox.ac.uk/fsldownloads/manifest.csv . Uncomment the wget
