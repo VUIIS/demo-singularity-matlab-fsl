@@ -35,6 +35,7 @@ From: ubuntu:20.04
   src                          /opt/pipeline
   matlab                       /opt/pipeline
   README.md                    /opt/pipeline
+  ImageMagick-policy.xml       /opt
 
   # If we're installing MCR and FSL from local copies, we need to copy those
   # into the container as well. We'll delete them after the installs.
@@ -58,10 +59,7 @@ From: ubuntu:20.04
   # Misc tools needed for basic operations
   apt install -y wget unzip zip bc
   
-  # Ghostscript and ImageMagick are very handy for making PDF QA reports. Note,
-  # older but still recent versions of ImageMagick had security issues needing
-  # modifications to /etc/ImageMagick-6/policy.xml before PDFs could be created,
-  # https://usn.ubuntu.com/3785-1/. Newer versions are workable out of the box.
+  # Ghostscript and ImageMagick are very handy for making PDF QA reports.
   apt install -y ghostscript imagemagick
   
   # xvfb is used to perform graphics operations "headless" to create figures,
@@ -74,6 +72,10 @@ From: ubuntu:20.04
   
   # FSL 6.0.4 requires these two additional packages
   apt install -y libopenblas-base language-pack-en
+  
+  # We need to make the ImageMagick security policy more permissive
+  # https://www.kb.cert.org/vuls/id/332928
+  mv /opt/ImageMagick-policy.xml /etc/ImageMagick-6/policy.xml
   
   # Download the Matlab Compiled Runtime installer, install, clean up. The 
   # installed version of the runtime must match the Matlab version that was used
