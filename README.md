@@ -52,15 +52,10 @@ Try building this from scratch, to find any immediate issues:
 
 1. Get the installers for Matlab Compiled Runtime and FSL and place them in the 
    `external` directory. URLs for these are in the `Singularity` file. Alternatively,
-   comment out the installer files in the 'files' section and uncomment the download
+   comment out the installer files in the '%files' section and uncomment the download
    lines ('wget') later - this way they will be downloaded as part of the build.
-  
-2. Get the compiled Matlab executable. This is stored with git LFS, thus depending
-   how you clone this repo, you may get a pointer text file instead of the actual
-   binary. You can download it manually and replace the pointer file. Or install git
-   LFS. Or for more adventure, compile it yourself following the instructions below.
-  
-3. Build the container, following the instructions below.
+
+2. Build the container, following the instructions below.
 
 
 ## Matlab part
