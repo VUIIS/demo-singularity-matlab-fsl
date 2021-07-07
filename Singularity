@@ -40,7 +40,7 @@ From: ubuntu:20.04
   # If we're installing MCR from a local copy, we need to copy it
   # into the container as well. We'll delete after the install.
   external/MATLAB_Runtime_R2019b_Update_6_glnxa64.zip   /opt/mcr_installer.zip
-  
+  external/fsl-6.0.4-centos7_64.tar.gz                  /opt
  
 %labels
   Maintainer baxter.rogers@vanderbilt.edu
@@ -105,10 +105,15 @@ From: ubuntu:20.04
   # FSL. The centos7 version suits for Ubuntu 14-20. For available versions, see
   # https://fsl.fmrib.ox.ac.uk/fsldownloads/manifest.csv 
   wget -nv -P /opt https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py
-  python2 /opt/fslinstaller.py -d /usr/local/fsl -V 6.0.4
+
+  #python2 /opt/fslinstaller.py -q -d /usr/local/fsl -V 6.0.4
+  #rm /opt/fslinstaller.py
+
+  python2 /opt/fslinstaller.py -q -f /opt/fsl-6.0.4-centos7_64.tar.gz -d /usr/local/fsl
+  rm /opt/fslinstaller.py /opt/fsl-6.0.4-centos7_64.tar.gz
+  
   echo '/usr/local/fsl/lib' > /etc/ld.so.conf.d/fsl.conf
   ldconfig
-  rm /opt/fslinstaller.py
 
   # Create a few directories to use as bind points when we run the container
   mkdir /INPUTS
