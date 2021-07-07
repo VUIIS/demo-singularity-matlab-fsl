@@ -23,6 +23,7 @@ in the MathWorks Documentation Center.
 
 Files to Package for Standalone 
 ================================
+-matlab_entrypoint.ctf (component technology file)
 -matlab_entrypoint 
 -run_matlab_entrypoint.sh (shell script for temporarily setting environment variables and 
                            executing the application)
