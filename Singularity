@@ -70,26 +70,6 @@ From: ubuntu:20.04
   # although it's also possible to do X operations piecemeal/as needed.
   apt install -y xvfb
 
-  # Matlab Runtime requires this Java runtime
-  apt install -y openjdk-8-jre
-  
-  # Matlab Compiled Runtime installation. Uncomment the wget command to download 
-  # the install package instead of using a local copy. The installed version of 
-  # the runtime must match the Matlab version that was used to compile the code. 
-  # Each version of the runtime has its own download URL and installed location:
-  # https://www.mathworks.com/products/compiler/matlab-runtime.html
-  mcr_url=https://ssd.mathworks.com/supportfiles/downloads/R2019b/Release/6/deployment_files/installer/complete/glnxa64/MATLAB_Runtime_R2019b_Update_6_glnxa64.zip
-  mcr_location=/usr/local/MATLAB/MATLAB_Runtime/v97
-  #wget -nv -P /opt ${mcr_url} -O mcr_installer.zip
-  unzip /opt/mcr_installer.zip -d /opt/mcr_installer
-  /opt/mcr_installer/install -mode silent -agreeToLicense yes
-  rm -r /opt/mcr_installer /opt/mcr_installer.zip
-  
-  # Matlab executable must be run now to extract the CTF archive, because
-  # now is the only time the container is writeable. The matlab entrypoint has
-  # a bit at the beginning that makes this work.
-  /opt/pipeline/matlab/bin/run_matlab_entrypoint.sh ${mcr_location} quit
-
   # FSL dependencies, h/t https://github.com/MPIB/singularity-fsl
   #            debian              ubuntu
   #            libjpeg62-turbo ->  libjpeg-turbo8
@@ -114,6 +94,26 @@ From: ubuntu:20.04
   
   echo '/usr/local/fsl/lib' > /etc/ld.so.conf.d/fsl.conf
   ldconfig
+
+  # Matlab Runtime requires this Java runtime
+  apt install -y openjdk-8-jre
+  
+  # Matlab Compiled Runtime installation. Uncomment the wget command to download 
+  # the install package instead of using a local copy. The installed version of 
+  # the runtime must match the Matlab version that was used to compile the code. 
+  # Each version of the runtime has its own download URL and installed location:
+  # https://www.mathworks.com/products/compiler/matlab-runtime.html
+  mcr_url=https://ssd.mathworks.com/supportfiles/downloads/R2019b/Release/6/deployment_files/installer/complete/glnxa64/MATLAB_Runtime_R2019b_Update_6_glnxa64.zip
+  mcr_location=/usr/local/MATLAB/MATLAB_Runtime/v97
+  #wget -nv -P /opt ${mcr_url} -O mcr_installer.zip
+  unzip /opt/mcr_installer.zip -d /opt/mcr_installer
+  /opt/mcr_installer/install -mode silent -agreeToLicense yes
+  rm -r /opt/mcr_installer /opt/mcr_installer.zip
+  
+  # Matlab executable must be run now to extract the CTF archive, because
+  # now is the only time the container is writeable. The matlab entrypoint has
+  # a bit at the beginning that makes this work.
+  /opt/pipeline/matlab/bin/run_matlab_entrypoint.sh ${mcr_location} quit
 
   # Create a few directories to use as bind points when we run the container
   mkdir /INPUTS
