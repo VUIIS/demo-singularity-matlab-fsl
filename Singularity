@@ -40,6 +40,9 @@ From: ubuntu:20.04
   # If we're installing MCR from a local copy, we need to copy it
   # into the container as well. We'll delete after the install.
   external/MATLAB_Runtime_R2019b_Update_6_glnxa64.zip   /opt/mcr_installer.zip
+
+  # We will use FSL's installer script, but we can ask it to install from
+  # an already-downloaded copy of the archive if we have one
   external/fsl-6.0.4-centos7_64.tar.gz                  /opt
  
 %labels
@@ -86,9 +89,11 @@ From: ubuntu:20.04
   # https://fsl.fmrib.ox.ac.uk/fsldownloads/manifest.csv 
   wget -nv -P /opt https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py
 
+  # Download the archive as part of the install
   #python2 /opt/fslinstaller.py -d /usr/local/fsl -V 6.0.4
   #rm /opt/fslinstaller.py
 
+  # Or install from an already-downloaded copy of the archive
   python2 /opt/fslinstaller.py -M -f /opt/fsl-6.0.4-centos7_64.tar.gz -d /usr/local/fsl
   rm /opt/fslinstaller.py /opt/fsl-6.0.4-centos7_64.tar.gz
   
