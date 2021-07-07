@@ -89,7 +89,7 @@ From: ubuntu:20.04
   #python2 /opt/fslinstaller.py -q -d /usr/local/fsl -V 6.0.4
   #rm /opt/fslinstaller.py
 
-  python2 /opt/fslinstaller.py -q -f /opt/fsl-6.0.4-centos7_64.tar.gz -d /usr/local/fsl
+  python2 /opt/fslinstaller.py -q -M -f /opt/fsl-6.0.4-centos7_64.tar.gz -d /usr/local/fsl
   rm /opt/fslinstaller.py /opt/fsl-6.0.4-centos7_64.tar.gz
   
   echo '/usr/local/fsl/lib' > /etc/ld.so.conf.d/fsl.conf
