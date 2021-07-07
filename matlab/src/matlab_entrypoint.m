@@ -32,10 +32,7 @@ addOptional(P,'diameter_mm','30');
 % When processing runs on XNAT, we generally have the project, subject,
 % session, and scan labels from XNAT available in case we want them. Often
 % the only need for these is to label the QA PDF.
-addOptional(P,'project','UNK_PROJ');
-addOptional(P,'subject','UNK_SUBJ');
-addOptional(P,'session','UNK_SESS');
-addOptional(P,'scan','UNK_SCAN');
+addOptional(P,'label_info','UNKNOWN SCAN');
 
 % Finally, we need to know where to store the outputs.
 addOptional(P,'out_dir','/OUTPUTS');

@@ -20,10 +20,7 @@ run_matlab_entrypoint.sh "${MATLAB_RUNTIME}" \
     t1_niigz "${out_dir}"/t1.nii.gz \
     seg_niigz "${out_dir}"/seg.nii.gz \
     diameter_mm "${diameter_mm}" \
-    project "${project}" \
-    subject "${subject}" \
-    session "${session}" \
-    scan "${scan}" \
+    label_info "${label_info}" \
     out_dir "${out_dir}"
 
 # Postprocessing

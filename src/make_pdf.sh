@@ -5,10 +5,6 @@
 
 echo Running $(basename "${BASH_SOURCE}")
 
-# Some useful text to put on the PDF pages
-thedate=$(date)
-infostring="${project} ${subject} ${session} ${scan}"
-
 # Work in output directory
 cd ${out_dir}
 
@@ -46,8 +42,8 @@ convert \
     -gravity center \( page1.png -resize 2400x \) -composite \
     -gravity North -pointsize 48 -annotate +0+100 \
     "Holed segmentation on holed T1" \
-    -gravity SouthEast -pointsize 48 -annotate +100+100 "${thedate}" \
-    -gravity NorthWest -pointsize 48 -annotate +100+200 "${infostring}" \
+    -gravity SouthEast -pointsize 48 -annotate +100+100 "$(date)" \
+    -gravity NorthWest -pointsize 48 -annotate +100+200 "${label_info}" \
     page1.png
 
 # Convert to PDF

@@ -13,10 +13,7 @@ echo Running $(basename "${BASH_SOURCE}")
 
 # Initialize defaults for any input parameters where that seems useful
 export diameter_mm=30
-export project=UNK_PROJ
-export subject=UNK_SUBJ
-export session=UNK_SESS
-export scan=UNK_SCAN
+export label_info="UNKNOWN SCAN"
 export out_dir=/OUTPUTS
 
 # Parse input options
@@ -40,16 +37,9 @@ do
             # Diameter in mm of the hole we will punch in the images
             export diameter_mm="$2"; shift; shift ;;
 
-        --project)
-            # Along with subject, session, scan, labels from XNAT that we will
-            # use to label the QA PDF
-            export project="$2"; shift; shift ;;
-        --subject)
-            export subject="$2"; shift; shift ;;
-        --session)
-            export session="$2"; shift; shift ;;
-        --scan)
-            export scan="$2"; shift; shift ;;
+        --label_info)
+            # Labels from XNAT that we will use to label the QA PDF
+            export label_info="$2"; shift; shift ;;
 
         --out_dir)
             # Where outputs will be stored. Also the working directory
