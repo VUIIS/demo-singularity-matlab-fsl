@@ -37,9 +37,10 @@ From: ubuntu:20.04
   README.md                    /opt/pipeline
   ImageMagick-policy.xml       /opt
 
-  # If we're installing MCR from a local copy, we need to copy it
-  # into the container as well. We'll delete after the install.
+  # If we're installing MCR and FSL from local copies, we need to copy those
+  # into the container as well. We'll delete them after the installs.
   external/MATLAB_Runtime_R2019b_Update_6_glnxa64.zip   /opt/mcr_installer.zip
+  external/fsl-6.0.4-centos7_64.tar.gz                  /opt/fsl_installer.zip
   
  
 %labels
@@ -103,13 +104,25 @@ From: ubuntu:20.04
     language-pack-en bzip2 dc bc
 
   # FSL. The centos7 version suits for Ubuntu 14-20. For available versions, see
-  # https://fsl.fmrib.ox.ac.uk/fsldownloads/manifest.csv 
-  wget -nv -P /opt https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py
-  python2 /opt/fslinstaller.py -d /usr/local/fsl -V 6.0.4
-  echo '/usr/local/fsl/lib' > /etc/ld.so.conf.d/fsl.conf
-  ldconfig
-  rm /opt/fslinstaller.py
+  # https://fsl.fmrib.ox.ac.uk/fsldownloads/manifest.csv . Uncomment the wget
+  # line to download instead of installing from a local copy of the file.
+  fslurl=https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.4-centos7_64.tar.gz
+  #wget -nv -P /opt ${fslurl} -O fsl_installer.zip
+  tar -zxf /opt/fsl_installer.zip -C /usr/local
+  rm /opt/fsl_installer.zip
 
+  # FSL setup so we can run the python installer
+  export FSLDIR=/usr/local/fsl
+  . ${FSLDIR}/etc/fslconf/fsl.sh
+  export PATH=${FSLDIR}/bin:${PATH}
+  
+  # FSL python installer, needed for fsleyes among other things. This 
+  # is normally done in the post_install phase when FSL's installer is run, but
+  # we do it manually here. A clue that we forgot this is an imglob error at
+  # runtime. Note that this requires an internet connection, as it downloads 
+  # some pieces from fsl.fmrib.ox.ac.uk.
+  ${FSLDIR}/etc/fslconf/fslpython_install.sh
+  
   # Create a few directories to use as bind points when we run the container
   mkdir /INPUTS
   mkdir /OUTPUTS
@@ -131,9 +144,11 @@ From: ubuntu:20.04
   export MATLAB_RUNTIME=/usr/local/MATLAB/MATLAB_Runtime/v97
 
   # FSL
+  # We set FSLDIR here, but the rest of FSL setup will have to be done at 
+  # run time in the pipeline code:
+  #       . ${FSLDIR}/etc/fslconf/fsl.sh
+  #       export PATH=${FSLDIR}/bin:${PATH}
   export FSLDIR=/usr/local/fsl
-  . ${FSLDIR}/etc/fslconf/fsl.sh
-  export PATH=${FSLDIR}/bin:${PATH}  
   
   # Path
   # We add the src directory, which contains shell scripts etc; and the 
