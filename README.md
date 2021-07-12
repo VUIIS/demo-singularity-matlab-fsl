@@ -221,10 +221,7 @@ Paths to files are relative to the container.
     --seg_niigz       Its corresponding segmentation from e.g. slant pipeline
     --diameter_mm     Diameter of the hole to zero out, in mm (default 30)
     
-    --project         Labels from XNAT, used only to annotate the QA PDF
-    --subject         (default UNK_*)
-    --session
-    --scan
+    --label_info      A label to annotate the QA PDF, e.g. info from XNAT
     
     --out_dir         Where outputs will be stored (default /OUTPUTS)
 
